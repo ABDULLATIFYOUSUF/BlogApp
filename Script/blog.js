@@ -91,7 +91,7 @@ const uploadFile = (file) => {
 let spinner = document.getElementById("spinner");
 
 fileInput.onchange = async () => {
-  spinner.style.display = "block";
+  spinner.style.display = "flex";
   try {
     img.src = await uploadFile(fileInput.files[0]);
     img.style.display = "block";
@@ -113,7 +113,7 @@ logoutBtn &&
   });
 let data;
 const getUser = async () => {
-  spinner.style.display = "block";
+  spinner.style.display = "flex";
   const docRef = doc(db, "blogUsers", uid);
   const docSnap = await getDoc(docRef);
   if (docSnap.exists()) {
@@ -129,7 +129,7 @@ const getUser = async () => {
 
 blogBtn &&
   blogBtn.addEventListener("click", async () => {
-    spinner.style.display = "block";
+    spinner.style.display = "flex";
     const docRef = doc(db, "blogUsers", uid);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
@@ -231,7 +231,7 @@ window.editBtn = (id, title, image, desc) => {
 };
 
 window.updateBlog = async (id, title, image, desc) => {
-  spinner.style.display = "block";
+  spinner.style.display = "flex";
   const washingtonRef = doc(db, "blogs", id);
 
   try {

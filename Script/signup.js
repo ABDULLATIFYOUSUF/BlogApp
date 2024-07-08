@@ -14,7 +14,7 @@ let spinner = document.getElementById("spinner");
 
 signupBtn &&
   signupBtn.addEventListener("click", () => {
-    spinner.style.display = "block";
+    spinner.style.display = "flex";
     createUserWithEmailAndPassword(auth, loginEmail.value, loginPassword.value)
       .then(async (userCredential) => {
         const user = userCredential.user;

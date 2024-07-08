@@ -19,7 +19,7 @@ onAuthStateChanged(auth, (user) => {
 });
 
 loginBtn.addEventListener("click", () => {
-  spinner.style.display = "block";
+  spinner.style.display = "flex";
   signInWithEmailAndPassword(auth, loginEmail.value, loginPassword.value)
     .then((userCredential) => {
       const user = userCredential.user;

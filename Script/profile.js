@@ -85,7 +85,7 @@ const uploadFile = (file) => {
 let spinner = document.getElementById("spinner");
 
 fileInput.onchange = async () => {
-  spinner.style.display = "block";
+  spinner.style.display = "flex";
   try {
     img.src = await uploadFile(fileInput.files[0]);
     spinner.style.display = "none";
@@ -95,7 +95,7 @@ fileInput.onchange = async () => {
 };
 let data;
 const getUser = async () => {
-  spinner.style.display = "block";
+  spinner.style.display = "flex";
   const docRef = doc(db, "blogUsers", uid);
   const docSnap = await getDoc(docRef);
 
@@ -116,7 +116,7 @@ const getUser = async () => {
 
 updateBtn &&
   updateBtn.addEventListener("click", async () => {
-    spinner.style.display = "block";
+    spinner.style.display = "flex";
     try {
       const washingtonRef = doc(db, "blogUsers", uid);
 
