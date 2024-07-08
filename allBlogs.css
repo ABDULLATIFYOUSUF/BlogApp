@@ -1,0 +1,133 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: blue;
+  padding: 10px;
+}
+
+nav h1 {
+  font-family: "Lucida Handwriting", cursive;
+  color: rgb(236, 236, 245);
+}
+
+
+nav a {
+  text-decoration: none;
+  font-size: 1.5em;
+  margin: 0px 10px;
+  color: rgb(236, 236, 245);
+}
+
+nav a:hover {
+  cursor: pointer;
+  color: rgb(80, 80, 99);;
+}
+
+nav img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.menuBtn {
+  display: none;
+  border: transparent;
+  font-size: 2em;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.menuList {
+  width: 130px;
+  background-color: blue;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  float: right;
+  border: rgb(236, 236, 245);
+  padding: 10px;
+  margin-top: 0px;
+  display: none;
+}
+
+.menuList a {
+  text-decoration: none;
+  font-size: 1.5em;
+  margin: 0px 10px;
+  color: rgb(236, 236, 245);
+}
+
+.menuList a:hover {
+  color: rgb(80, 80, 99);
+}
+
+@media screen and (max-width: 600px) {
+  nav a {
+    display: none;
+    color: black;
+    font-size: 0.5em;
+  }
+
+  nav img {
+    display: none;
+  }
+
+  .menuBtn {
+    display: block;
+  }
+
+}
+
+.mainHeading {
+  font-family: "Lucida Handwriting", cursive;
+  color: blue;
+  margin: 40px;
+  text-align: center;
+  text-decoration: underline;
+  font-size: 3em;
+}
+
+.allBlogsDiv {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+
+}
+
+.mainDiv {
+  border: 5px solid blue;
+  width: 300px;
+  height: fit-content;
+  padding: 20px;
+  border-radius: 10px;
+
+}
+
+.fDiv {
+  display: flex;
+  justify-content: space-between;
+  font-family: "Lucida Handwriting", cursive;
+  align-items: center;
+  gap: 5px;
+}
+
+.fDiv img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.sDiv h1 {
+  font-family: "Lucida Handwriting", cursive;
+
+}
+
+.sDiv img {
+  width: 100%;
+  border-radius: 10px;
+  height: 250px;
+  margin: 10px auto;
+}

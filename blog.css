@@ -1,0 +1,301 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: blue;
+  padding: 10px;
+}
+
+nav h1 {
+  font-family: "Lucida Handwriting", cursive;
+  color: rgb(236, 236, 245);
+}
+
+nav a {
+  text-decoration: none;
+  font-size: 1.5em;
+  margin: 0px 10px;
+  color: rgb(236, 236, 245);
+}
+
+nav a:hover {
+  cursor: pointer;
+  color: rgb(80, 80, 99);
+}
+
+nav img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.menuBtn {
+  display: none;
+  border: transparent;
+  font-size: 2em;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.menuList {
+  width: 130px;
+  background-color: blue;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  float: right;
+  border: rgb(236, 236, 245);
+  padding: 10px;
+  margin-top: 0px;
+  display: none;
+}
+
+.menuList a {
+  text-decoration: none;
+  font-size: 1.5em;
+  margin: 0px 10px;
+  color: rgb(236, 236, 245);
+}
+
+.menuList a:hover {
+  color: rgb(80, 80, 99);
+}
+
+@media screen and (max-width: 600px) {
+  nav a {
+    display: none;
+    color: black;
+    font-size: 0.5em;
+  }
+
+  nav img {
+    display: none;
+  }
+
+  .menuBtn {
+    display: block;
+  }
+
+}
+
+.form {
+  width: 300px;
+  padding: 20px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 20px auto;
+}
+
+.form h1 {
+  font-family: "Lucida Handwriting", cursive;
+  color: blue;
+  font-size: 1.5em;
+  rotate: -15deg;
+  box-shadow: rgba(83, 83, 172, 0.2) 0px 7px 29px 0px;
+  padding: 10px;
+  border-radius: 10px;
+  text-decoration: underline;
+}
+
+.form input {
+  width: 80%;
+  padding: 15px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  font-size: 1em;
+  border: none;
+  border-radius: 10px;
+}
+
+.form textarea {
+  width: 80%;
+  height: 100px;
+  padding: 15px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  font-size: 1em;
+  border: none;
+  border-radius: 10px;
+}
+
+.form .fileInput {
+  display: none;
+}
+
+.form img {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin: 5px auto;
+  z-index: 10;
+  display: none;
+}
+
+.form label {
+  text-align: center;
+  cursor: pointer;
+  color: blue;
+  margin: 20px auto;
+}
+
+.form label i {
+  color: black;
+  font-size: 2em;
+}
+
+.form button {
+  background-color: blue;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  box-shadow: rgba(83, 83, 172, 0.2) 0px 7px 29px 0px;
+  width: 80%;
+}
+
+/* spinner */
+
+.loader {
+  transform: rotateZ(45deg);
+  perspective: 1000px;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  color: blue;
+  display: none;
+}
+
+.loader:before,
+.loader:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: inherit;
+  height: inherit;
+  border-radius: 50%;
+  transform: rotateX(70deg);
+  animation: 1s spin linear infinite;
+}
+
+.loader:after {
+  color: #FF3D00;
+  transform: rotateY(70deg);
+  animation-delay: .4s;
+}
+
+@keyframes rotate {
+  0% {
+    transform: translate(-50%, -50%) rotateZ(0deg);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotateZ(360deg);
+  }
+}
+
+@keyframes rotateccw {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(-360deg);
+  }
+}
+
+@keyframes spin {
+
+  0%,
+  100% {
+    box-shadow: .2em 0px 0 0px currentcolor;
+  }
+
+  12% {
+    box-shadow: .2em .2em 0 0 currentcolor;
+  }
+
+  25% {
+    box-shadow: 0 .2em 0 0px currentcolor;
+  }
+
+  37% {
+    box-shadow: -.2em .2em 0 0 currentcolor;
+  }
+
+  50% {
+    box-shadow: -.2em 0 0 0 currentcolor;
+  }
+
+  62% {
+    box-shadow: -.2em -.2em 0 0 currentcolor;
+  }
+
+  75% {
+    box-shadow: 0px -.2em 0 0 currentcolor;
+  }
+
+  87% {
+    box-shadow: .2em -.2em 0 0 currentcolor;
+  }
+}
+
+.blogContainer {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.subContainer {
+  width: 300px;
+  height: fit-content;
+  border: 5px solid blue;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.topDiv {
+  justify-content: right;
+  display: flex;
+  gap: 10px;
+  font-size: 1.5em;
+}
+
+.topDiv .bi-pencil-fill {
+  color: green;
+}
+
+.topDiv .bi-trash3-fill {
+  color: red;
+}
+
+.subContainer h4 {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: "Lucida Handwriting", cursive;
+  color: blue;
+}
+
+.subContainer h4 img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.blogImage {
+  width: 90%;
+  height: 150px;
+  border-radius: 10px;
+
+}
+
+.blogHead {
+  font-family: "Lucida Handwriting", cursive;
+  color: blue;
+}
