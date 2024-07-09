@@ -39,7 +39,7 @@ nav img {
 }
 
 .menuList {
-  width: 130px;
+  width: fit-content;
   background-color: blue;
   height: 100px;
   display: flex;
@@ -88,46 +88,41 @@ nav img {
   font-size: 3em;
 }
 
-.allBlogsDiv {
+.allBlogDiv {
   display: flex;
-  justify-content: left;
+  flex-direction: column;
+}
+.topDiv{
+  width: 80%;
+  margin: 25px auto;
+  display: flex;
+  flex-direction: column;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding: 20px;
+}
+.topDiv1{
+  display: flex;
   align-items: center;
   gap: 20px;
-  flex-wrap: wrap;
-
 }
-
-.mainDiv {
-  border: 5px solid blue;
-  width: 300px;
-  height: fit-content;
-  padding: 20px;
-  border-radius: 10px;
-
-}
-
-.fDiv {
-  display: flex;
-  justify-content: space-between;
+.topDiv1 h1{
   font-family: "Lucida Handwriting", cursive;
-  align-items: center;
-  gap: 5px;
 }
-
-.fDiv img {
-  width: 50px;
-  height: 50px;
+.userImg{
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
 }
 
-.sDiv h1 {
-  font-family: "Lucida Handwriting", cursive;
-
-}
-
-.sDiv img {
-  width: 100%;
+.blogImg{
+  width: 40%;
+  height: 8em;
   border-radius: 10px;
-  height: 250px;
-  margin: 10px auto;
+  margin: 0px auto;
+}
+.blogTitle{
+  font-family: "Lucida Handwriting", cursive;
+}
+.blogDesc{
+  font-size: 1em;
 }

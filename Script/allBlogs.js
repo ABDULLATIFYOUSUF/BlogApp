@@ -1,6 +1,8 @@
 import {
   doc,
   app,
+  query,
+  where,
   collection,
   getDoc,
   getDocs,
@@ -55,23 +57,38 @@ const querySnapshot = await getDocs(collection(db, "blogs"));
 querySnapshot.forEach((doc) => {
   let data = doc.data();
 
-  allBlogsDiv.innerHTML += `<div class="mainDiv">
-            <div class="fDiv">
-                <img src="${data.user.profile}">
-                <h4>${data.user.userName}</h4>
-                <h4>${data.time.toDate().toDateString()}</h4>
-            </div>
-            <div class="sDiv">
-                <img src="${data.BlogImage}">
-                <h1>${data.Title}</h1>
-                <p>${data.Desc}</p>
-            </div>
-            
-
-        </div>`;
+  allBlogsDiv.innerHTML += `<div class="topDiv">
+        <div class="topDiv1">
+          <div>
+            <img class="userImg" src="${data.user.profile}" alt="">
+          </div>
+          <div>
+            <h1 class="userName">${data.user.userName}</h1>
+            <p class="blogTime">${data.time.toDate().toDateString()}</p>
+          </div>
+        </div>
+        <img class="blogImg" src="${data.BlogImage}">
+        <h2 class="blogTitle">${data.Title}</h2>
+        <p class="blogDesc">${data.Desc}</p>
+        <a href="./user.html?user=${data.user.uid}">view all blogs</a>
+      </div>`
 });
 
-logoutBtn.addEventListener("click", () => {
+
+
+
+logoutBtn && logoutBtn.addEventListener("click", () => {
+    signOut(auth)
+      .then(() => {
+        location.href = "./index.html";
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  });
+  let logoutNav = document.getElementById("logoutNav")
+
+  logoutNav && logoutNav.addEventListener("click", () => {
     signOut(auth)
       .then(() => {
         location.href = "./index.html";

@@ -9,8 +9,8 @@ let loginBtn = document.getElementById("loginBtn");
 let spinner = document.getElementById("spinner");
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    if (location.pathname !== "/blog.html") {
-      location.href = "/blog.html";
+    if (location.pathname !== "/allBlogs.html") {
+      location.href = "/allBlogs.html";
     }
     const uid = user.uid;
   } else {
@@ -24,7 +24,7 @@ loginBtn.addEventListener("click", () => {
     .then((userCredential) => {
       const user = userCredential.user;
       spinner.style.display = "none";
-      location.href = "./blog.html";
+      location.href = "./allBlogs.html";
     })
     .catch((error) => {
       spinner.style.display = "none";

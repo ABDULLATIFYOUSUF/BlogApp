@@ -38,7 +38,7 @@ nav img {
 }
 
 .menuList {
-  width: 130px;
+  width: fit-content;
   background-color: blue;
   height: 100px;
   display: flex;

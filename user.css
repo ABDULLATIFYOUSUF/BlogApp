@@ -1,0 +1,45 @@
+.back{
+    font-family: "Lucida Handwriting", cursive;
+    text-decoration: none;
+    font-size: 3em;
+    margin: 20px;
+    font-weight: bold;
+}
+.userView {
+    display: flex;
+    flex-direction: column;
+  }
+  .topDiv{
+    width: 80%;
+    margin: 25px auto;
+    display: flex;
+    flex-direction: column;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 20px;
+  }
+  .topDiv1{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .topDiv1 h1{
+    font-family: "Lucida Handwriting", cursive;
+  }
+  .userImg{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+  }
+  
+  .blogImg{
+    width: 90%;
+    height: 8em;
+    border-radius: 10px;
+    margin: 0px auto;
+  }
+  .blogTitle{
+    font-family: "Lucida Handwriting", cursive;
+  }
+  .blogDesc{
+    font-size: 1em;
+  }

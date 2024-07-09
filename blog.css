@@ -38,7 +38,7 @@ nav img {
 }
 
 .menuList {
-  width: 130px;
+  width: fit-content;
   background-color: blue;
   height: 100px;
   display: flex;
@@ -78,8 +78,10 @@ nav img {
 
 }
 
+
+
 .form {
-  width: 300px;
+  width: 80%;
   padding: 20px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   display: flex;
@@ -126,9 +128,9 @@ nav img {
 
 .form img {
   position: relative;
-  width: 150px;
+  width: 40%;
   height: 150px;
-  border-radius: 50%;
+  border-radius: 10px;
   margin: 5px auto;
   z-index: 10;
   display: none;
@@ -154,6 +156,7 @@ nav img {
   border-radius: 8px;
   box-shadow: rgba(83, 83, 172, 0.2) 0px 7px 29px 0px;
   width: 80%;
+  cursor: pointer;
 }
 
 /* spinner */
@@ -207,56 +210,51 @@ nav img {
 
 .blogContainer {
   display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
+  flex-direction: column;
 }
-
-.subContainer {
-  width: 300px;
-  height: fit-content;
-  border: 5px solid blue;
+.topDiv{
+  width: 80%;
+  margin: 25px auto;
+  display: flex;
+  flex-direction: column;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   padding: 20px;
-  border-radius: 10px;
 }
-
-.topDiv {
-  justify-content: right;
+.btnDiv{
   display: flex;
   gap: 10px;
-  font-size: 1.5em;
+  justify-content: right;
 }
-
-.topDiv .bi-pencil-fill {
+.btnDiv .bi-pencil-fill {
   color: green;
 }
 
-.topDiv .bi-trash3-fill {
+.btnDiv .bi-trash3-fill {
   color: red;
 }
-
-.subContainer h4 {
+.topDiv1{
   display: flex;
   align-items: center;
-  gap: 5px;
-  font-family: "Lucida Handwriting", cursive;
-  color: blue;
+  gap: 20px;
 }
-
-.subContainer h4 img {
-  width: 50px;
-  height: 50px;
+.topDiv1 h1{
+  font-family: "Lucida Handwriting", cursive;
+}
+.userImg{
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
 }
 
-.blogImage {
-  width: 90%;
-  height: 150px;
+.blogImg{
+  width: 40%;
+  height: 8em;
   border-radius: 10px;
-
+  margin: 0px auto;
 }
-
-.blogHead {
+.blogTitle{
   font-family: "Lucida Handwriting", cursive;
-  color: blue;
+}
+.blogDesc{
+  font-size: 1em;
 }

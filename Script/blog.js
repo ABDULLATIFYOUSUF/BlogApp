@@ -32,6 +32,7 @@ let blogDiv = document.getElementById("blogDiv");
 let labelInput = document.getElementById("labelInput");
 let uid;
 let menuBtn = document.getElementById("menuBtn");
+let logoutNav = document.getElementById("logoutNav")
 
 menuBtn &&
   menuBtn.addEventListener("click", () => {
@@ -101,16 +102,7 @@ fileInput.onchange = async () => {
   }
 };
 
-logoutBtn &&
-  logoutBtn.addEventListener("click", () => {
-    signOut(auth)
-      .then(() => {
-        location.href = "./index.html";
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  });
+
 let data;
 const getUser = async () => {
   spinner.style.display = "flex";
@@ -154,7 +146,10 @@ blogBtn &&
         showConfirmButton: false,
         timer: 1500,
       });
-      window.location.reload();
+      img.style.display = "none";
+      blogTitle.value = '',
+      blogDesc.value = ''
+      getBlogs(data.uid)
     } catch (error) {
       spinner.style.display = "none";
       Swal.fire({
@@ -166,35 +161,42 @@ blogBtn &&
   });
 
 let getBlogs = async (uid) => {
+  blogDiv.innerHTML = '';
   const q = query(collection(db, "blogs"), where("userId", "==", uid));
 
   const querySnapshot = await getDocs(q);
   querySnapshot.forEach((doc) => {
     let blogData = doc.data();
     blogDiv.classList.add("blogContainer");
-    blogDiv.innerHTML += `<div class="subContainer">
-    <div class="topDiv">
-    <button class="eBtn" onClick="editBtn('${doc.id}', '${blogData.Title}', '${
-      blogData.BlogImage
-    }', '${blogData.Desc}')"><i class="bi bi-pencil-fill"></i></button>
-    <button class="dBtn" onClick="deleteBtn('${
-      doc.id
-    }')"><i class="bi bi-trash3-fill"></i></button>
-      </div>
-    <h4><img class="blogImage" src="${blogData.user.profile}">${
-      blogData.user.userName
-    }, <p>${blogData.time
-      .toDate()
-      .toDateString()}</p></h4><img class="blogImage" src="${
-      blogData.BlogImage
-    }">
-      <h1 class="blogHead">${blogData.Title}</h1>
-      <h6 class="descBlog">${blogData.Desc}</h6>
-      </div>`;
+    blogDiv.innerHTML += `<div class="topDiv">
+        <div class="btnDiv"><button class="eBtn" onClick="editBtn('${doc.id}', '${blogData.Title}', '${
+          blogData.BlogImage
+        }', '${blogData.Desc}')"><i class="bi bi-pencil-fill"></i></button>
+        <button class="dBtn" onClick="deleteBtn('${
+          doc.id
+        }', '${
+          uid
+        }')"><i class="bi bi-trash3-fill"></i></button></div>
+        <div class="topDiv1">
+          <div>
+            <img class="userImg" src="${blogData.user.profile}" alt="">
+          </div>
+          <div>
+            <h1 class="userName">${blogData.user.userName}</h1>
+            <p class="blogTime">${blogData.time.toDate().toDateString()}</p>
+          </div>
+        </div>
+        <img class="blogImg" src="${blogData.BlogImage}">
+        <h2 class="blogTitle">${blogData.Title}</h2>
+        <p class="blogDesc">${blogData.Desc}</p>
+        
+      </div>`
+
   });
 };
 
-window.deleteBtn = async (id) => {
+window.deleteBtn = async (id, userId) => {
+  spinner.style.display = "flex"
   try {
     await deleteDoc(doc(db, "blogs", id));
     Swal.fire({
@@ -204,8 +206,10 @@ window.deleteBtn = async (id) => {
       showConfirmButton: false,
       timer: 1500,
     });
-    window.location.reload();
-  } catch (error) {
+  spinner.style.display = "none"
+    getBlogs(userId)   
+  } 
+  catch (error) {
     spinner.style.display = "none";
     Swal.fire({
       icon: "error",
@@ -257,3 +261,24 @@ window.updateBlog = async (id, title, image, desc) => {
     spinner.style.display = "none";
   }
 };
+
+logoutBtn &&
+  logoutBtn.addEventListener("click", () => {
+    signOut(auth)
+      .then(() => {
+        location.href = "./index.html";
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  });
+
+  logoutNav && logoutNav.addEventListener("click", () => {
+    signOut(auth)
+      .then(() => {
+        location.href = "./index.html";
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  });

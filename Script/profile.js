@@ -101,7 +101,7 @@ const getUser = async () => {
 
   if (docSnap.exists()) {
     data = docSnap.data();
-    img.src = data.profile;
+    img.src = data.profile ? data.Profile : './images/profile.jfif';
     userName.value = data.userName;
     phoneNumber.value = data.phoneNumber;
     loginEmail.value = data.loginEmail;
@@ -146,6 +146,17 @@ updateBtn &&
 
 logoutBtn &&
   logoutBtn.addEventListener("click", () => {
+    signOut(auth)
+      .then(() => {
+        location.href = "./index.html";
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  });
+  let logoutNav = document.getElementById("logoutNav")
+
+  logoutNav && logoutNav.addEventListener("click", () => {
     signOut(auth)
       .then(() => {
         location.href = "./index.html";
