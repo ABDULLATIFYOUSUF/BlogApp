@@ -12,6 +12,7 @@ import {
     onAuthStateChanged,
   } from "./firebase.js";
 let userView = document.getElementById("userView")
+let userProfileView = document.getElementById("userProfileView")
 const urlParams = new URLSearchParams(location.search);
 const myParam = urlParams.get('user');
 console.log(myParam)
@@ -38,6 +39,11 @@ let userBlogs = async (id) => {
           <p class="blogDesc">${blogData.Desc}</p>
           
         </div>`
+        userProfileView.innerHTML = `<img src="${blogData.user.profile}" alt="">
+        <h1>${blogData.user.userName}</h1>
+        <h3>${blogData.user.phoneNumber}</h3>`
+
+
     });
   
   }
