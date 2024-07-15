@@ -14,6 +14,10 @@
 @media screen and (max-width: 600px) {
   .userData {
     flex-wrap: wrap;
+    width: 90%;
+  }
+  .userProfileView{
+    width: 90%;
   }
 }
 .userProfileView{
@@ -32,10 +36,29 @@
   height: 150px;
   border-radius: 50%;
 }
+
 .userView {
     width: 80%;
     display: flex;
     flex-direction: column;
+  }
+  @media screen and (max-width: 600px) {
+ 
+    .userProfileView{
+      width: 100% !important;
+    }
+    .userView{
+      width: 100%;
+    }
+  }
+  @media screen and (max-width: 1440px) {
+ 
+    .userProfileView{
+      width: 40%;
+    }
+    .userView{
+      width: 60%;
+    }
   }
   .topDiv{
     margin: 25px auto;
