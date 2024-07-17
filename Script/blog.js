@@ -33,6 +33,7 @@ let labelInput = document.getElementById("labelInput");
 let uid;
 let menuBtn = document.getElementById("menuBtn");
 let logoutNav = document.getElementById("logoutNav")
+let updBtn = document.createElement("button");
 
 menuBtn &&
   menuBtn.addEventListener("click", () => {
@@ -225,7 +226,6 @@ window.editBtn = (id, title, image, desc) => {
   (img.src = image),
     (blogDesc.innerHTML = desc),
     (blogBtn.style.display = "none");
-  let updBtn = document.createElement("button");
   updBtn.innerHTML = "Update";
   mainDiv.appendChild(updBtn);
   updBtn.setAttribute(
@@ -251,7 +251,12 @@ window.updateBlog = async (id, title, image, desc) => {
       timer: 1500,
     });
     spinner.style.display = "none";
-    window.location.reload();
+  labelInput.innerHTML = "Click Here to upload image";
+    blogTitle.value = '';
+    blogDesc.value = '';
+    updBtn.style.display = "none"
+    blogBtn.style.display = "block"
+    getBlogs(uid)
   } catch (error) {
     Swal.fire({
       icon: "error",
