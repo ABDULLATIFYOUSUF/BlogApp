@@ -33,7 +33,13 @@ let labelInput = document.getElementById("labelInput");
 let uid;
 let menuBtn = document.getElementById("menuBtn");
 let logoutNav = document.getElementById("logoutNav")
-let updBtn = document.createElement("button");
+let EditDiv = document.getElementById("EditDiv")
+let EditTitle = document.getElementById("EditTitle")
+let EditDesc = document.getElementById("EditDesc")
+let UpdBtn = document.getElementById("UpdBtn")
+
+
+
 
 menuBtn &&
   menuBtn.addEventListener("click", () => {
@@ -161,114 +167,98 @@ blogBtn &&
     }
   });
 
-let getBlogs = async (uid) => {
-  blogDiv.innerHTML = '';
-  const q = query(collection(db, "blogs"), where("userId", "==", uid));
 
-  const querySnapshot = await getDocs(q);
-  querySnapshot.forEach((doc) => {
-    let blogData = doc.data();
-    blogDiv.classList.add("blogContainer");
-    blogDiv.innerHTML += `<div class="topDiv">
-        <div class="btnDiv"><button class="eBtn" onClick="editBtn('${doc.id}', '${blogData.Title}', '${
-          blogData.BlogImage
-        }', '${blogData.Desc}')"><i class="bi bi-pencil-fill"></i></button>
-        <button class="dBtn" onClick="deleteBtn('${
-          doc.id
-        }', '${
-          uid
-        }')"><i class="bi bi-trash3-fill"></i></button></div>
-        <div class="topDiv1">
-          <div>
-            <img class="userImg" src="${blogData.user.profile}" alt="">
+  let getBlogs = async (uid) => {
+    blogDiv.innerHTML = '';
+    const q = query(collection(db, "blogs"), where("userId", "==", uid));
+  
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      let blogData = doc.data();
+      blogDiv.classList.add("blogContainer");
+      blogDiv.innerHTML += `
+        <div class="topDiv">
+          <div class="btnDiv">      
+            <button onclick="editBtn('${doc.id}', \`${blogData.Title}\`, \`${blogData.Desc}\`)" class="eBtn"><i class="bi bi-pencil-fill"></i></button>
+            <button class="dBtn" onclick="deleteBtn('${doc.id}', '${uid}')"><i class="bi bi-trash3-fill"></i></button>
           </div>
-          <div>
-            <h1 class="userName">${blogData.user.userName}</h1>
-            <p class="blogTime">${blogData.time.toDate().toDateString()}</p>
+          <div class="topDiv1">
+            <div>
+              <img class="userImg" src="${blogData.user.profile}" alt="">
+            </div>
+            <div>
+              <h1>${blogData.user.userName}</h1>
+              <p>${blogData.time.toDate().toDateString()}</p>
+            </div>
           </div>
+          <img class="blogImg" src="${blogData.BlogImage}" alt="">
+          <h3 class="blogTitle">${blogData.Title}</h3>
+          <p class="blogDesc">${blogData.Desc}</p>
         </div>
-        <img class="blogImg" src="${blogData.BlogImage}">
-        <h2 class="blogTitle">${blogData.Title}</h2>
-        <p class="blogDesc">${blogData.Desc}</p>
-        
-      </div>`
-
-  });
-};
-
-window.deleteBtn = async (id, userId) => {
-  spinner.style.display = "flex"
-  try {
-    await deleteDoc(doc(db, "blogs", id));
-    Swal.fire({
-      position: "center",
-      icon: "success",
-      title: "Successfully deleted",
-      showConfirmButton: false,
-      timer: 1500,
+      `;
     });
-  spinner.style.display = "none"
-    getBlogs(userId)   
-  } 
-  catch (error) {
-    spinner.style.display = "none";
-    Swal.fire({
-      icon: "error",
-      title: "Oops...",
-      text: error,
-    });
-  }
-};
-
-window.editBtn = (id, title, image, desc) => {
-  labelInput.innerHTML = "";
-  blogTitle.value = title;
-  (img.src = image),
-    (blogDesc.innerHTML = desc),
-    (blogBtn.style.display = "none");
-  updBtn.innerHTML = "Update";
-  mainDiv.appendChild(updBtn);
-  updBtn.setAttribute(
-    "onclick",
-    `updateBlog('${id}', '${title}', '${image}', '${desc}')`
-  );
-};
-
-window.updateBlog = async (id, title, image, desc) => {
-  spinner.style.display = "flex";
-  const washingtonRef = doc(db, "blogs", id);
-
-  try {
-    await updateDoc(washingtonRef, {
-      Title: blogTitle.value,
-      Desc: blogDesc.value,
-    });
-    Swal.fire({
-      position: "center",
-      icon: "success",
-      title: "Update Blog Successfully",
-      showConfirmButton: false,
-      timer: 1500,
-    });
-    spinner.style.display = "none";
-  labelInput.innerHTML = "Click Here to upload image";
-    blogTitle.value = '';
-    blogDesc.value = '';
-    updBtn.style.display = "none"
-    blogBtn.style.display = "block"
-    getBlogs(uid)
-  } catch (error) {
-    Swal.fire({
-      icon: "error",
-      title: "Oops...",
-      text: error,
-    });
-    spinner.style.display = "none";
-  }
-};
-
-logoutBtn &&
-  logoutBtn.addEventListener("click", () => {
+  };
+  
+  window.deleteBtn = async (id, userId) => {
+    spinner.style.display = "flex";
+    try {
+      await deleteDoc(doc(db, "blogs", id));
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Successfully deleted",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      spinner.style.display = "none";
+      getBlogs(userId);   
+    } catch (error) {
+      spinner.style.display = "none";
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: error.message,
+      });
+    }
+  };
+  
+  window.editBtn = (id, title, desc) => {
+    EditDiv.style.display = "flex"
+    EditTitle.value = title
+    EditDesc.value = desc
+    UpdBtn.setAttribute("onclick", `updateBlog('${id}')`);
+  };
+  
+  window.updateBlog = async (id) => {
+    spinner.style.display = "flex";
+    const washingtonRef = doc(db, "blogs", id);
+  
+    try {
+      await updateDoc(washingtonRef, {
+        Title: EditTitle.value,
+        Desc: EditDesc.value,
+      });
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Blog Updated Successfully",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      spinner.style.display = "none";
+      EditDiv.style.display = "none"
+      getBlogs(uid);
+    } catch (error) {
+      spinner.style.display = "none";
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: error.message,
+      });
+    }
+  };
+  
+  logoutBtn && logoutBtn.addEventListener("click", () => {
     signOut(auth)
       .then(() => {
         location.href = "./index.html";
@@ -277,7 +267,7 @@ logoutBtn &&
         console.log(error);
       });
   });
-
+  
   logoutNav && logoutNav.addEventListener("click", () => {
     signOut(auth)
       .then(() => {
@@ -287,3 +277,4 @@ logoutBtn &&
         console.log(error);
       });
   });
+  

@@ -34,12 +34,22 @@
     <div id="spinner" class="loader-container">
       <span class="loader"></span>
     </div>
+    <div id="EditDiv" class="EditForm">
+      <h1>Blog App</h1>
+      <input autocomplete="off" id="EditTitle" type="text" placeholder="Title...." />
+      <textarea
+        name=""
+        id="EditDesc"
+        placeholder="What's in your mind...."
+      ></textarea>
+      <button id="UpdBtn">Update</button>
+    </div>
     <div id="mainDiv" class="form">
       <h1>Blog App</h1>
       <img id="img" src="./images/profile.jfif" alt="" />
       <label id="labelInput" for="fileInput">Click Here to upload image</label>
       <input class="fileInput" type="file" id="fileInput" />
-      <input id="blogTitle" type="text" placeholder="Title...." />
+      <input autocomplete="off" id="blogTitle" type="text" placeholder="Title...." />
       <textarea
         name=""
         id="blogDesc"
@@ -50,6 +60,10 @@
     <div id="blogDiv">
       
     </div>
+
+    
+
+
   </body>
   <script type="module" src="./Script/blog.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

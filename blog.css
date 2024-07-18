@@ -258,3 +258,59 @@ nav img {
 .blogDesc{
   font-size: 1em;
 }
+.EditForm{
+  width: 80%;
+  background-color: rgb(151, 66, 66);
+  padding: 20px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 20px auto; 
+  position: sticky;
+  z-index: 999;
+  top: 0;
+}
+
+.EditForm h1 {
+  font-family: "Lucida Handwriting", cursive;
+  color: blue;
+  font-size: 1.5em;
+  rotate: -15deg;
+  box-shadow: rgba(83, 83, 172, 0.2) 0px 7px 29px 0px;
+  padding: 10px;
+  border-radius: 10px;
+  text-decoration: underline;
+}
+
+.EditForm input {
+  width: 80%;
+  padding: 15px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  font-size: 1em;
+  border: none;
+  border-radius: 10px;
+}
+
+.EditForm textarea {
+  width: 80%;
+  height: 100px;
+  padding: 15px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  font-size: 1em;
+  border: none;
+  border-radius: 10px;
+}
+
+.EditForm button {
+  background-color: blue;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  box-shadow: rgba(83, 83, 172, 0.2) 0px 7px 29px 0px;
+  width: 80%;
+  cursor: pointer;
+}
